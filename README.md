@@ -1,0 +1,2 @@
+# CourseSpotter
+Course Availability Notifier
