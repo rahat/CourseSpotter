@@ -30,3 +30,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### API Auth ###
+"sendgrid.env" 
+"twilio.env" 
