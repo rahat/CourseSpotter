@@ -42,8 +42,7 @@
 		<dependency>
 			<groupId>com.twilio.sdk</groupId>
 			<artifactId>twilio</artifactId>
-			<version>7.45.1</version>
-			<scope>runtime</scope>
+			<version>7.42.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sendgrid</groupId>
