@@ -20,6 +20,10 @@ public class CourseInfo {
         this.status = status;
     }
 
+    public CourseInfo() {
+
+    }
+
     public String getId() {
         return id;
     }
@@ -58,5 +62,16 @@ public class CourseInfo {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseInfo{" +
+                "id='" + id + '\'' +
+                ", times='" + times + '\'' +
+                ", room='" + room + '\'' +
+                ", instructor='" + instructor + '\'' +
+                ", status='" + status + '\'' +
+                '}';
     }
 }
