@@ -70,7 +70,12 @@
 			<artifactId>jodd-lagarto</artifactId>
 			<version>5.0.13</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 	<dependencyManagement>
 		<dependencies>
