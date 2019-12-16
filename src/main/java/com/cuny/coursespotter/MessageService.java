@@ -14,18 +14,45 @@ import com.twilio.type.PhoneNumber;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 @Service
 public class MessageService {
 
     private SendGrid sendGrid;
 
-    public static final String accountSid = System.getenv("TWILIO_ACCOUNT_SID");
-    public static final String authToken = System.getenv("TWILIO_AUTH_TOKEN");
+    public String accountSid;
+    public String authToken;
+    public String sendGridKey;
 
     public MessageService() {
+        loadConfiguration();
         Twilio.init(accountSid, authToken);
-        sendGrid = new SendGrid(System.getenv("SENDGRID_API_KEY"));
+        sendGrid = new SendGrid(sendGridKey);
+    }
+
+    /**
+     * Fetch necessary info from the configuration file
+     */
+    private void loadConfiguration() {
+
+        try (InputStream config = getClass().getClassLoader().getResourceAsStream("config.properties")){
+            Properties properties = new Properties();
+
+            if(config == null) {
+                System.out.println("Unable to read config file.");
+                return;
+            }
+
+            properties.load(config);
+
+            accountSid = properties.getProperty("twilio.accountsid");
+            authToken = properties.getProperty("twilio.authtoken");
+            sendGridKey = properties.getProperty("sendgrid.key");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -35,7 +62,7 @@ public class MessageService {
      * @param subject email subject line
      * @param to      email address to send to
      * @param content email body
-     * @return
+     * @return An integer value which is the response status code
      */
     public int sendEmail(String from, String subject, String to, Content content) {
         Mail mail = new Mail(new Email(from), subject, new Email(to), content);
@@ -59,8 +86,9 @@ public class MessageService {
      * @param to   To number
      * @param from From number
      * @param body Message body
+     * @return String containing message SID
      */
-    public void sendText(String to, String from, String body) {
+    public String sendText(String to, String from, String body) {
         try {
             Message message = Message.creator(
                     new PhoneNumber(to),
@@ -68,9 +96,10 @@ public class MessageService {
                     body
             ).create();
 
-            System.out.println(message.getSid());
+            return message.getSid();
         } catch (final ApiException e) {
             e.printStackTrace();
         }
+        return "";
     }
 }
