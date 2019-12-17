@@ -13,3 +13,24 @@ html {
     --lumo-font-size-xs: 0.875rem;
     --lumo-font-size-xxs: 0.8125rem;
 }
+
+.app-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+vaadin-form-item {
+    flex-direction: column;
+    align-items: center;
+}
+
+vaadin-form-item > label {
+    text-align: left;
+    margin-left: -35%;
+}
+
+#logo {
+    margin-top: 0;
+    margin-bottom: 0;
+}

@@ -34,3 +34,4 @@ build/
 ### API Auth ###
 sendgrid.env
 twilio.env
+*.exe
