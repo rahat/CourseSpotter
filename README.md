@@ -1,12 +1,13 @@
 # CourseSpotter
 
-CourseSpotter is a Java application built with Spring Boot that will periodically check CUNYfirst (City University of New York's student information system) and check to see course availability for the courses that the student is interested in. The information that the user inputs are CUNY College Name, Subject, Course Number, Phone Number and/or Email Address. When the course is available, then the application sends a text message or email to the student, or both, as preferred by them.
+CourseSpotter is a Java web application built with Spring Boot that will periodically check CUNYfirst (City University of New York's student information system) to see course availability for closed courses where all seats have been taken. The information that the user inputs are CUNY College Name, Subject, Course Number, Phone Number and/or Email Address. When the course is available, the application sends a text message and/or email to the student.
 
 ## Technologies
 
 - Frameworks: Spring Boot, Vaadin
 - APIs: Twilio, SendGrid
 - Database: Microsoft SQL Server
+- Build Tool: Maven
 - Target Platform: Desktop, Mobile
 - Operating Systems: Windows, Mac, Linux
 
